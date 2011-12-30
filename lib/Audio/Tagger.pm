@@ -1,23 +1,21 @@
 package Audio::Tagger;
 {
-  $Audio::Tagger::VERSION = '0.01';
+  $Audio::Tagger::VERSION = '0.02';
 }
 
 use strict;
 use warnings;
 
-require Exporter;
 require XSLoader;
 XSLoader::load('Audio::Tagger', $Audio::Tagger::VERSION);
 
-use Audio::Tagger::FileRef;
+use Audio::Tagger::File;
+use Audio::Tagger::MP3;
 
+require Exporter;
 our @ISA = qw(Exporter);
 
-our @EXPORT_OK = qw(
-        File
-);
-
+our @EXPORT_OK = qw(File MP3);
 
 =head1 NAME
 
@@ -25,7 +23,7 @@ Audio::Tagger - Perl module to handle audio metadata
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 SYNOPSIS
 
@@ -33,7 +31,7 @@ Synopsis section
 
     use feature 'say';
 
-    use Audio::Tagger qw(File);
+    use Audio::Tagger qw(File MP3);
 
     my $tagger = File("/path/to/file.mp3");
 
@@ -50,31 +48,52 @@ Synopsis section
     $tagger -> save or
         die("Cannot write to disk");
 
+    # strip all the tags from an mp3
+    my $stripper = MP3("/path/to/file.mp3");
+
+    $stripper -> strip or
+        die("Cannot strip tags");
+    $stripper -> save or
+        die("Cannot write to disk");
+
 =head1 DESCRIPTION
 
 B<Audio::Tagger> is a module to read and write metadata from various types of
-different audio formats, based on L<taglib|http://developer.kde.org/~wheeler/taglib.html>.
-It tries to be easy to use, but flexible enough to allow most of the usages of
-this kind of software. It isn't (and won't be) a full Perl taglib interface.
+different audio formats. It tries to be easy to use, but also quite flexible.
+
+Despite Audio::Tagger is based on the L<taglib|http://developer.kde.org/~wheeler/taglib.html>
+library, it isn't and won't be a full Perl interface to taglib.
 
 Why another module for audio tags? There are some other modules that handle
 audio tags, but they are either incomplete or completely broken. For instance,
-L<Audio::Scan> and L<Audio::File> can only read tags, L<Audio::TagLib> does not
-even build, L<Audio::Metadata>, L<Audio::APE>, L<Mp3::Info>, and others support
-only a single audio or tag format, etc...
+L<Audio::Scan> and L<Audio::File> can read but cannot write, L<Audio::Metadata>,
+L<Audio::APE>, L<Mp3::Info>, and others support only a single audio or tag
+format, L<Audio::TagLib> does not even build, etc...
 
 =head1 SUBROUTINES
 
 =head2 File( $filename )
 
-Create an L<Audio::Tagger::FileRef> object given a file name.
+Create an L<Audio::Tagger::File> object given a file name.
 
 =cut
 
 sub File {
 	my $filename = shift;
 
-	return Audio::Tagger::FileRef -> new($filename);
+	return Audio::Tagger::File -> new($filename);
+}
+
+=head2 MP3( $filename )
+
+Create an L<Audio::Tagger::MP3> object given a file name.
+
+=cut
+
+sub MP3 {
+	my $filename = shift;
+
+	return Audio::Tagger::MP3 -> new($filename);
 }
 
 =head1 AUTHOR

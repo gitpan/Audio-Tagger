@@ -10,7 +10,8 @@ Tagger.xs
 dist.ini
 inc/MakeMaker.pm
 lib/Audio/Tagger.pm
-lib/Audio/Tagger/FileRef.pm
+lib/Audio/Tagger/File.pm
+lib/Audio/Tagger/MP3.pm
 t/00-compile.t
 t/01-read-flac.t
 t/01-read-mp3.t
@@ -21,6 +22,7 @@ t/02-write-ogg.t
 t/03-save-flac.t
 t/03-save-mp3.t
 t/03-save-ogg.t
+t/04-strip-mp3.t
 t/data/brown.flac
 t/data/brown.mp3
 t/data/brown.ogg
@@ -36,5 +38,5 @@ t/data/white.wav
 t/release-check-manifest.t
 t/release-pod-coverage.t
 t/release-pod-syntax.t
-typemap
-xs/FileRef.xs
+xs/File.xs
+xs/MP3.xs

@@ -2,39 +2,40 @@
 
 use Test::More;
 
-use Audio::Tagger;
+use Audio::Tagger qw(File MP3);
 
-{
-	my $tagger = Audio::Tagger::FileRef -> new('t/data/brown.mp3');
+my $files = [{
+	filename => 't/data/brown.mp3', title => 'Brown Noise',
+	artist => 'A random guy', album => 'Some noise',
+	comment => 'I am a comment', year => 2011, track => 1
+}, {
+	filename => 't/data/pink.mp3', title => 'Pink Noise',
+	artist   => 'A random guy', album  => 'Some noise',
+	comment  => 'I am a comment', year => 2011, track => 2
+}, {
+	filename => 't/data/white.mp3', title => 'White Noise',
+	artist   => 'A random guy', album => 'Some noise',
+	comment  => 'I am a comment', year => 2011, track => 3
+}];
 
-	is($tagger -> title, "Brown Noise");
-	is($tagger -> artist, "A random guy");
-	is($tagger -> album, "Some noise");
-	is($tagger -> comment, "I am a comment");
-	is($tagger -> year, 2011);
-	is($tagger -> track, 1);
-}
+foreach my $file (@$files) {
+	my $tagger = File($file -> {filename});
 
-{
-	my $tagger = Audio::Tagger::FileRef -> new('t/data/pink.mp3');
+	is($tagger -> title, $file -> {title});
+	is($tagger -> artist, $file -> {artist});
+	is($tagger -> album, $file -> {album});
+	is($tagger -> comment, $file -> {comment});
+	is($tagger -> year, $file -> {year});
+	is($tagger -> track, $file -> {track});
 
-	is($tagger -> title, "Pink Noise");
-	is($tagger -> artist, "A random guy");
-	is($tagger -> album, "Some noise");
-	is($tagger -> comment, "I am a comment");
-	is($tagger -> year, 2011);
-	is($tagger -> track, 2);
-}
+	$tagger = MP3($file -> {filename});
 
-{
-	my $tagger = Audio::Tagger::FileRef -> new('t/data/white.mp3');
-
-	is($tagger -> title, "White Noise");
-	is($tagger -> artist, "A random guy");
-	is($tagger -> album, "Some noise");
-	is($tagger -> comment, "I am a comment");
-	is($tagger -> year, 2011);
-	is($tagger -> track, 3);
+	is($tagger -> title, $file -> {title});
+	is($tagger -> artist, $file -> {artist});
+	is($tagger -> album, $file -> {album});
+	is($tagger -> comment, $file -> {comment});
+	is($tagger -> year, $file -> {year});
+	is($tagger -> track, $file -> {track});
 }
 
 done_testing;

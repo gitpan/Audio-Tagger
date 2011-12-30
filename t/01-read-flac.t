@@ -2,39 +2,31 @@
 
 use Test::More;
 
-use Audio::Tagger;
+use Audio::Tagger qw(File);
 
-{
-	my $tagger = Audio::Tagger::FileRef -> new('t/data/brown.flac');
+my $files = [{
+	filename => 't/data/brown.flac', title => 'Brown Noise',
+	artist => 'A random guy', album => 'Some noise',
+	comment => 'I am a comment', year => 2011, track => 1
+}, {
+	filename => 't/data/pink.flac', title => 'Pink Noise',
+	artist   => 'A random guy', album  => 'Some noise',
+	comment  => 'I am a comment', year => 2011, track => 2
+}, {
+	filename => 't/data/white.flac', title => 'White Noise',
+	artist   => 'A random guy', album => 'Some noise',
+	comment  => 'I am a comment', year => 2011, track => 3
+}];
 
-	is($tagger -> title, "Brown Noise");
-	is($tagger -> artist, "A random guy");
-	is($tagger -> album, "Some noise");
-	is($tagger -> comment, "I am a comment");
-	is($tagger -> year, 2011);
-	is($tagger -> track, 1);
-}
+foreach my $file (@$files) {
+	my $tagger = File($file -> {filename});
 
-{
-	my $tagger = Audio::Tagger::FileRef -> new('t/data/pink.flac');
-
-	is($tagger -> title, "Pink Noise");
-	is($tagger -> artist, "A random guy");
-	is($tagger -> album, "Some noise");
-	is($tagger -> comment, "I am a comment");
-	is($tagger -> year, 2011);
-	is($tagger -> track, 2);
-}
-
-{
-	my $tagger = Audio::Tagger::FileRef -> new('t/data/white.flac');
-
-	is($tagger -> title, "White Noise");
-	is($tagger -> artist, "A random guy");
-	is($tagger -> album, "Some noise");
-	is($tagger -> comment, "I am a comment");
-	is($tagger -> year, 2011);
-	is($tagger -> track, 3);
+	is($tagger -> title, $file -> {title});
+	is($tagger -> artist, $file -> {artist});
+	is($tagger -> album, $file -> {album});
+	is($tagger -> comment, $file -> {comment});
+	is($tagger -> year, $file -> {year});
+	is($tagger -> track, $file -> {track});
 }
 
 done_testing;

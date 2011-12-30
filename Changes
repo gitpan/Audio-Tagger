@@ -2,6 +2,62 @@
 Changes from 2010-12-30 00:00:00 +0000 to present.
 ==================================================
 
+-----------------------------------------
+version 0.02 at 2011-12-30 18:03:10 +0000
+-----------------------------------------
+
+  Change: e6baa4efcc51f74281e6736a4ef5b47ecb193eb6
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2011-12-30 19:03:02 +0000
+
+    bump version 
+
+  Change: 794156d56a936de2a13f2cba8bf41974f2e4099e
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2011-12-30 19:00:57 +0000
+
+    add initial MP3 file support 
+
+  Change: 886d7dee71106a568a2bc6bd99a48ffc256b953c
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2011-12-30 18:35:01 +0000
+
+    re-word description 
+
+  Change: c76e55b681ff194b011009ec3342fc49ed242837
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2011-12-30 17:30:16 +0000
+
+    make tests less repetitive 
+
+  Change: 596f9ce6dcd39519d1326e70c1d6f863bc66bc74
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2011-12-30 16:21:31 +0000
+
+    rename FileRef to File 
+
+  Change: a7e7cc0981eb7d6ec00c19e0b25498e4ebde0892
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2011-12-30 15:42:24 +0000
+
+    use File() instead of Audio::Tagger::FileRef -> new() 
+
+-----------------------------------------
+version 0.01 at 2011-12-30 11:54:15 +0000
+-----------------------------------------
+
+  Change: 49abdb772728a889784e68d33c21acd45b113031
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2011-12-30 12:54:15 +0000
+
+    make code more modular 
+
+  Change: 4b8a16525bba67c720ae67be6805921484863e7d
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2011-12-29 20:53:33 +0000
+
+    initial commit 
+
 ================
 End of releases.
 ================
