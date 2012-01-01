@@ -3,7 +3,7 @@
 use Test::More;
 
 use File::Copy;
-use Audio::Tagger qw(File);
+use Audio::Tagger qw(File Ogg);
 
 my $files = [{filename => 't/data/brown.ogg'}, {filename => 't/data/pink.ogg'}, {filename => 't/data/white.ogg'}];
 
@@ -35,6 +35,31 @@ foreach my $file (@$files) {
 	is($tagger -> save, 1);
 
 	my $tagger2 = File($temp);
+
+	is($tagger2 -> title, $new_title);
+	is($tagger2 -> artist, $new_artist);
+	is($tagger2 -> album, $new_album);
+	is($tagger2 -> comment, $new_comment);
+	is($tagger2 -> year, $new_year);
+	is($tagger2 -> track, $new_track);
+
+	unlink($temp);
+
+	copy($file -> {filename}, $temp)
+		or die "Copy failed: $!";
+
+	$tagger = Ogg($temp);
+
+	$tagger -> title($new_title);
+	$tagger -> artist($new_artist);
+	$tagger -> album($new_album);
+	$tagger -> comment($new_comment);
+	$tagger -> year($new_year);
+	$tagger -> track($new_track);
+
+	is($tagger -> save, 1);
+
+	$tagger2 = Ogg($temp);
 
 	is($tagger2 -> title, $new_title);
 	is($tagger2 -> artist, $new_artist);

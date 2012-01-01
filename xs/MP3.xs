@@ -193,3 +193,30 @@ _tagger_mp3_tag_set_num(self, tagn, number)
 		RETVAL = newSVuv(number);
 	OUTPUT:
 		RETVAL
+
+SV *
+_tagger_mp3_prop_get_num(self, propn)
+	SV *self
+	unsigned int propn;
+
+	INIT:
+		MPEG::File *file;
+		unsigned int num;
+		AudioProperties *prop;
+	CODE:
+		if (sv_isobject(self) && sv_derived_from(self, "Audio::Tagger::MP3"))
+			file = INT2PTR(MPEG::File *, SvIV((SV *) SvRV(self)));
+		else
+			Perl_croak(aTHX_ "$var is not of type Audio::Tagger::MP3");
+
+		prop = file -> audioProperties();
+
+		switch (propn) {
+			case 0: { num = prop -> bitrate();    break; }
+			case 1: { num = prop -> sampleRate(); break; }
+			case 2: { num = prop -> channels();   break; }
+		}
+
+		RETVAL = newSVuv(num);
+	OUTPUT:
+		RETVAL

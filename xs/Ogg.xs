@@ -1,14 +1,14 @@
-#include <taglib/fileref.h>
+#include <taglib/vorbisfile.h>
 
-MODULE = Audio::Tagger		PACKAGE = Audio::Tagger::File
+MODULE = Audio::Tagger		PACKAGE = Audio::Tagger::Ogg
 
 SV *
-_tagger_file_file_new(path)
+_tagger_ogg_file_new(path)
 	SV *path
 
 	INIT:
 		Tag *tag;
-		FileRef *file;
+		Vorbis::File *file;
 		SV *self = newSV(1);
 
 		STRLEN len;
@@ -17,24 +17,24 @@ _tagger_file_file_new(path)
 		SvGETMAGIC(path);
 		filename = SvPV(path, len);
 
-		file = new FileRef(filename);
+		file = new Vorbis::File(filename);
 
-		RETVAL = sv_setref_pv(self, "Audio::Tagger::File", (void *) file);
+		RETVAL = sv_setref_pv(self, "Audio::Tagger::Ogg", (void *) file);
 	OUTPUT:
 		RETVAL
 
 SV *
-_tagger_file_file_save(self)
+_tagger_ogg_file_save(self)
 	SV *self
 
 	INIT:
-		FileRef *file;
+		Vorbis::File *file;
 
 	CODE:
-		if (sv_isobject(self) && sv_derived_from(self, "Audio::Tagger::File"))
-			file = INT2PTR(FileRef *, SvIV((SV *) SvRV(self)));
+		if (sv_isobject(self) && sv_derived_from(self, "Audio::Tagger::Ogg"))
+			file = INT2PTR(Vorbis::File *, SvIV((SV *) SvRV(self)));
 		else
-			Perl_croak(aTHX_ "$var is not of type Audio::Tagger::File");
+			Perl_croak(aTHX_ "$var is not of type Audio::Tagger::Ogg");
 
 		if (file -> save())
 			RETVAL = newSVuv(1);
@@ -44,33 +44,33 @@ _tagger_file_file_save(self)
 		RETVAL
 
 void
-_tagger_file_file_destroy(self)
+_tagger_ogg_file_destroy(self)
 	SV *self
 
 	INIT:
-		FileRef *file;
+		Vorbis::File *file;
 	CODE:
-		if (sv_isobject(self) && sv_derived_from(self, "Audio::Tagger::File"))
-			file = INT2PTR(FileRef *, SvIV((SV *) SvRV(self)));
+		if (sv_isobject(self) && sv_derived_from(self, "Audio::Tagger::Ogg"))
+			file = INT2PTR(Vorbis::File *, SvIV((SV *) SvRV(self)));
 		else
-			Perl_croak(aTHX_ "$var is not of type Audio::Tagger::File");
+			Perl_croak(aTHX_ "$var is not of type Audio::Tagger::Ogg");
 
 		delete file;
 
 SV *
-_tagger_file_tag_get_str(self, tagn)
+_tagger_ogg_tag_get_str(self, tagn)
 	SV *self
 	unsigned int tagn;
 
 	INIT:
 		Tag *tag;
 		String str;
-		FileRef *file;
+		Vorbis::File *file;
 	CODE:
-		if (sv_isobject(self) && sv_derived_from(self, "Audio::Tagger::File"))
-			file = INT2PTR(FileRef *, SvIV((SV *) SvRV(self)));
+		if (sv_isobject(self) && sv_derived_from(self, "Audio::Tagger::Ogg"))
+			file = INT2PTR(Vorbis::File *, SvIV((SV *) SvRV(self)));
 		else
-			Perl_croak(aTHX_ "$var is not of type Audio::Tagger::File");
+			Perl_croak(aTHX_ "$var is not of type Audio::Tagger::Ogg");
 
 		tag = file -> tag();
 
@@ -87,22 +87,22 @@ _tagger_file_tag_get_str(self, tagn)
 		RETVAL
 
 SV *
-_tagger_file_tag_set_str(self, tagn, string)
+_tagger_ogg_tag_set_str(self, tagn, string)
 	SV *self
 	SV *string
 	unsigned int tagn
 
 	INIT:
 		Tag *tag;
-		FileRef *file;
+		Vorbis::File *file;
 
 		STRLEN len;
 		const char *new_string;
 	CODE:
-		if (sv_isobject(self) && sv_derived_from(self, "Audio::Tagger::File"))
-			file = INT2PTR(FileRef *, SvIV((SV *) SvRV(self)));
+		if (sv_isobject(self) && sv_derived_from(self, "Audio::Tagger::Ogg"))
+			file = INT2PTR(Vorbis::File *, SvIV((SV *) SvRV(self)));
 		else
-			Perl_croak(aTHX_ "$var is not of type Audio::Tagger::File");
+			Perl_croak(aTHX_ "$var is not of type Audio::Tagger::Ogg");
 
 		SvGETMAGIC(string);
 		new_string = SvPV(string, len);
@@ -122,19 +122,19 @@ _tagger_file_tag_set_str(self, tagn, string)
 		RETVAL
 
 SV *
-_tagger_file_tag_get_num(self, tagn)
+_tagger_ogg_tag_get_num(self, tagn)
 	SV *self
 	unsigned int tagn;
 
 	INIT:
 		Tag *tag;
-		FileRef *file;
+		Vorbis::File *file;
 		unsigned int num;
 	CODE:
-		if (sv_isobject(self) && sv_derived_from(self, "Audio::Tagger::File"))
-			file = INT2PTR(FileRef *, SvIV((SV *) SvRV(self)));
+		if (sv_isobject(self) && sv_derived_from(self, "Audio::Tagger::Ogg"))
+			file = INT2PTR(Vorbis::File *, SvIV((SV *) SvRV(self)));
 		else
-			Perl_croak(aTHX_ "$var is not of type Audio::Tagger::File");
+			Perl_croak(aTHX_ "$var is not of type Audio::Tagger::Ogg");
 
 		tag = file -> tag();
 
@@ -148,19 +148,19 @@ _tagger_file_tag_get_num(self, tagn)
 		RETVAL
 
 SV *
-_tagger_file_tag_set_num(self, tagn, number)
+_tagger_ogg_tag_set_num(self, tagn, number)
 	SV *self
 	unsigned int tagn
 	unsigned int number
 
 	INIT:
 		Tag *tag;
-		FileRef *file;
+		Vorbis::File *file;
 	CODE:
-		if (sv_isobject(self) && sv_derived_from(self, "Audio::Tagger::File"))
-			file = INT2PTR(FileRef *, SvIV((SV *) SvRV(self)));
+		if (sv_isobject(self) && sv_derived_from(self, "Audio::Tagger::Ogg"))
+			file = INT2PTR(Vorbis::File *, SvIV((SV *) SvRV(self)));
 		else
-			Perl_croak(aTHX_ "$var is not of type Audio::Tagger::File");
+			Perl_croak(aTHX_ "$var is not of type Audio::Tagger::Ogg");
 
 		tag = file -> tag();
 
@@ -174,19 +174,19 @@ _tagger_file_tag_set_num(self, tagn, number)
 		RETVAL
 
 SV *
-_tagger_file_prop_get_num(self, propn)
+_tagger_ogg_prop_get_num(self, propn)
 	SV *self
 	unsigned int propn;
 
 	INIT:
-		FileRef *file;
+		Vorbis::File *file;
 		unsigned int num;
 		AudioProperties *prop;
 	CODE:
-		if (sv_isobject(self) && sv_derived_from(self, "Audio::Tagger::File"))
-			file = INT2PTR(FileRef *, SvIV((SV *) SvRV(self)));
+		if (sv_isobject(self) && sv_derived_from(self, "Audio::Tagger::Ogg"))
+			file = INT2PTR(Vorbis::File *, SvIV((SV *) SvRV(self)));
 		else
-			Perl_croak(aTHX_ "$var is not of type Audio::Tagger::File");
+			Perl_croak(aTHX_ "$var is not of type Audio::Tagger::Ogg");
 
 		prop = file -> audioProperties();
 

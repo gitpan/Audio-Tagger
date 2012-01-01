@@ -1,6 +1,6 @@
 package Audio::Tagger;
 {
-  $Audio::Tagger::VERSION = '0.02';
+  $Audio::Tagger::VERSION = '0.03';
 }
 
 use strict;
@@ -10,12 +10,14 @@ require XSLoader;
 XSLoader::load('Audio::Tagger', $Audio::Tagger::VERSION);
 
 use Audio::Tagger::File;
+use Audio::Tagger::Flac;
 use Audio::Tagger::MP3;
+use Audio::Tagger::Ogg;
 
 require Exporter;
 our @ISA = qw(Exporter);
 
-our @EXPORT_OK = qw(File MP3);
+our @EXPORT_OK = qw(File Flac MP3 Ogg);
 
 =head1 NAME
 
@@ -23,7 +25,7 @@ Audio::Tagger - Perl module to handle audio metadata
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 SYNOPSIS
 
@@ -48,20 +50,11 @@ Synopsis section
     $tagger -> save or
         die("Cannot write to disk");
 
-    # strip all the tags from an mp3
-    my $stripper = MP3("/path/to/file.mp3");
-
-    $stripper -> strip or
-        die("Cannot strip tags");
-    $stripper -> save or
-        die("Cannot write to disk");
-
 =head1 DESCRIPTION
 
 B<Audio::Tagger> is a module to read and write metadata from various types of
 different audio formats. It tries to be easy to use, but also quite flexible.
-
-Despite Audio::Tagger is based on the L<taglib|http://developer.kde.org/~wheeler/taglib.html>
+Despite it's based on the L<taglib|http://developer.kde.org/~wheeler/taglib.html>
 library, it isn't and won't be a full Perl interface to taglib.
 
 Why another module for audio tags? There are some other modules that handle
@@ -84,6 +77,18 @@ sub File {
 	return Audio::Tagger::File -> new($filename);
 }
 
+=head2 Flac( $filename )
+
+Create an L<Audio::Tagger::Flac> object given a file name.
+
+=cut
+
+sub Flac {
+	my $filename = shift;
+
+	return Audio::Tagger::Flac -> new($filename);
+}
+
 =head2 MP3( $filename )
 
 Create an L<Audio::Tagger::MP3> object given a file name.
@@ -94,6 +99,18 @@ sub MP3 {
 	my $filename = shift;
 
 	return Audio::Tagger::MP3 -> new($filename);
+}
+
+=head2 Ogg( $filename )
+
+Create an L<Audio::Tagger::Ogg> object given a file name.
+
+=cut
+
+sub Ogg {
+	my $filename = shift;
+
+	return Audio::Tagger::Ogg -> new($filename);
 }
 
 =head1 AUTHOR

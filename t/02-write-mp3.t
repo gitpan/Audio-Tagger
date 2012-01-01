@@ -62,6 +62,8 @@ foreach my $file (@$files) {
 
 	$tagger -> track($new_track);
 	is($tagger -> track, $new_track);
+
+	unlink($temp);
 }
 
 done_testing;

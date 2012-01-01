@@ -1,6 +1,6 @@
 package Audio::Tagger::File;
 {
-  $Audio::Tagger::File::VERSION = '0.02';
+  $Audio::Tagger::File::VERSION = '0.03';
 }
 
 use strict;
@@ -12,7 +12,7 @@ Audio::Tagger::File - Perl module to handle audio metadata (generic files)
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 SYNOPSIS
 
@@ -36,19 +36,6 @@ Synopsis section
     # save the modifications to disk
     $tagger -> save or
         die("Cannot write to disk");
-
-=head1 DESCRIPTION
-
-B<Audio::Tagger> is a module to read and write metadata from various types of
-different audio formats, based on L<taglib|http://developer.kde.org/~wheeler/taglib.html>.
-It tries to be easy to use, but flexible enough to allow most of the usages of
-this kind of software. It isn't (and won't be) a full Perl taglib interface.
-
-Why another module for audio tags? There are some other modules that handle
-audio tags, but they are either incomplete or completely broken. For instance,
-L<Audio::Scan> and L<Audio::File> can only read tags, L<Audio::TagLib> does not
-even build, L<Audio::Metadata>, L<Audio::APE>, L<Mp3::Info>, and others support
-only a single audio or tag format, etc...
 
 =head1 METHODS
 
@@ -88,7 +75,7 @@ sub DESTROY {
 
 =head2 title( [ $title ] )
 
-Return the title tag of the given C<Audio::Tagger> object, if called with no
+Return the title tag of the given C<Audio::Tagger::File> object, if called with no
 arguments, otherwise set the title tag to C<$title>.
 
 =cut
@@ -103,7 +90,7 @@ sub title {
 
 =head2 artist( [ $artist ] )
 
-Return the artist tag of the given C<Audio::Tagger> object, if called with no
+Return the artist tag of the given C<Audio::Tagger::File> object, if called with no
 arguments, otherwise set the artist tag to C<$artist>.
 
 =cut
@@ -118,7 +105,7 @@ sub artist {
 
 =head2 album( [ $album ] )
 
-Return the album tag of the given C<Audio::Tagger> object, if called with no
+Return the album tag of the given C<Audio::Tagger::File> object, if called with no
 arguments, otherwise set the album tag to C<$album>.
 
 =cut
@@ -133,7 +120,7 @@ sub album {
 
 =head2 comment( [ $comment ] )
 
-Return the comment tag of the given C<Audio::Tagger> object, if called with no
+Return the comment tag of the given C<Audio::Tagger::File> object, if called with no
 arguments, otherwise set the comment tag to C<$comment>.
 
 =cut
@@ -148,7 +135,7 @@ sub comment {
 
 =head2 genre( [ $genre ] )
 
-Return the genre tag of the given C<Audio::Tagger> object, if called with no
+Return the genre tag of the given C<Audio::Tagger::File> object, if called with no
 arguments, otherwise set the genre tag to C<$genre>.
 
 =cut
@@ -163,7 +150,7 @@ sub genre {
 
 =head2 year( [ $year ] )
 
-Return the year tag of the given C<Audio::Tagger> object, if called with no
+Return the year tag of the given C<Audio::Tagger::File> object, if called with no
 arguments, otherwise set the year tag to C<$year>.
 
 =cut
@@ -178,7 +165,7 @@ sub year {
 
 =head2 track( [ $track ] )
 
-Return the track tag of the given C<Audio::Tagger> object, if called with no
+Return the track tag of the given C<Audio::Tagger::File> object, if called with no
 arguments, otherwise set the track tag to C<$track>.
 
 =cut
@@ -189,6 +176,42 @@ sub track {
 	(defined $track)						?
 		$self -> _tagger_file_tag_set_num(1, $track)		:
 		$self -> _tagger_file_tag_get_num(1);
+}
+
+=head2 bitrate( )
+
+Return the bitrate of the given C<Audio::Tagger::File> object.
+
+=cut
+
+sub bitrate {
+	my $self = shift;
+
+	$self -> _tagger_file_prop_get_num(0);
+}
+
+=head2 samplerate( )
+
+Return the sample rate of the given C<Audio::Tagger::File> object.
+
+=cut
+
+sub samplerate {
+	my $self = shift;
+
+	$self -> _tagger_file_prop_get_num(1);
+}
+
+=head2 channels( )
+
+Return the number of channels of the given C<Audio::Tagger::File> object.
+
+=cut
+
+sub channels {
+	my $self = shift;
+
+	$self -> _tagger_file_prop_get_num(2);
 }
 
 =head1 AUTHOR
