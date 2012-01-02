@@ -26,7 +26,7 @@ resources:
   bugtracker: https://github.com/AlexBio/Audio-Tagger/issues
   homepage: http://search.cpan.org/dist/Audio-Tagger/
   repository: git://github.com/AlexBio/Audio-Tagger.git
-version: 0.03
+version: 0.04
 x_Dist_Zilla:
   plugins:
     -

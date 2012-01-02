@@ -1,6 +1,6 @@
 package Audio::Tagger;
 {
-  $Audio::Tagger::VERSION = '0.03';
+  $Audio::Tagger::VERSION = '0.04';
 }
 
 use strict;
@@ -9,7 +9,7 @@ use warnings;
 require XSLoader;
 XSLoader::load('Audio::Tagger', $Audio::Tagger::VERSION);
 
-use Audio::Tagger::File;
+use Audio::Tagger::Any;
 use Audio::Tagger::Flac;
 use Audio::Tagger::MP3;
 use Audio::Tagger::Ogg;
@@ -17,7 +17,7 @@ use Audio::Tagger::Ogg;
 require Exporter;
 our @ISA = qw(Exporter);
 
-our @EXPORT_OK = qw(File Flac MP3 Ogg);
+our @EXPORT_OK = qw(Any File Flac MP3 Ogg);
 
 =head1 NAME
 
@@ -25,7 +25,7 @@ Audio::Tagger - Perl module to handle audio metadata
 
 =head1 VERSION
 
-version 0.03
+version 0.04
 
 =head1 SYNOPSIS
 
@@ -33,9 +33,9 @@ Synopsis section
 
     use feature 'say';
 
-    use Audio::Tagger qw(File MP3);
+    use Audio::Tagger qw(Any);
 
-    my $tagger = File("/path/to/file.mp3");
+    my $tagger = Any("/path/to/file.mp3");
 
     # print the song title
     say $tagger -> title;
@@ -54,27 +54,36 @@ Synopsis section
 
 B<Audio::Tagger> is a module to read and write metadata from various types of
 different audio formats. It tries to be easy to use, but also quite flexible.
-Despite it's based on the L<taglib|http://developer.kde.org/~wheeler/taglib.html>
-library, it isn't and won't be a full Perl interface to taglib.
+Despite it being based on the L<taglib|http://developer.kde.org/~wheeler/taglib.html>
+library, it isn't and won't be a full Perl interface to such library.
 
 Why another module for audio tags? There are some other modules that handle
 audio tags, but they are either incomplete or completely broken. For instance,
-L<Audio::Scan> and L<Audio::File> can read but cannot write, L<Audio::Metadata>,
-L<Audio::APE>, L<Mp3::Info>, and others support only a single audio or tag
-format, L<Audio::TagLib> does not even build, etc...
+L<Audio::Scan> and L<Audio::File> can only read tags but cannot modify them,
+L<Audio::FLAC::Header>, L<Audio::APE>, L<MP3::Info>, and others support only a
+single audio or tag format, L<Audio::TagLib> does not build, and many others.
 
 =head1 SUBROUTINES
 
-=head2 File( $filename )
+=head2 Any( $filename )
 
-Create an L<Audio::Tagger::File> object given a file name.
+Create an L<Audio::Tagger::Any> object given a file name.
 
+=cut
+
+sub Any {
+	my $filename = shift;
+
+	return Audio::Tagger::Any -> new($filename);
+}
+
+=for Pod::Coverage File
 =cut
 
 sub File {
 	my $filename = shift;
 
-	return Audio::Tagger::File -> new($filename);
+	return Audio::Tagger::Any -> new($filename);
 }
 
 =head2 Flac( $filename )

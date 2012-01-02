@@ -3,7 +3,7 @@
 use Test::More;
 
 use File::Copy;
-use Audio::Tagger qw(File MP3);
+use Audio::Tagger qw(Any MP3);
 
 my $files = [{filename => 't/data/brown.mp3'}, {filename => 't/data/pink.mp3'}, {filename => 't/data/white.mp3'}];
 
@@ -12,7 +12,7 @@ foreach my $file (@$files) {
 	copy($file -> {filename}, $temp)
 		or die "Copy failed: $!";
 
-	my $tagger = File($temp);
+	my $tagger = Any($temp);
 
 	my $new_title = 'Another title';
 	$tagger -> title($new_title);
@@ -34,7 +34,7 @@ foreach my $file (@$files) {
 
 	is($tagger -> save, 1);
 
-	my $tagger2 = File($temp);
+	my $tagger2 = Any($temp);
 
 	is($tagger2 -> title, $new_title);
 	is($tagger2 -> artist, $new_artist);

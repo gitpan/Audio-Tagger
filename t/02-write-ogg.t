@@ -3,7 +3,7 @@
 use Test::More;
 
 use File::Copy;
-use Audio::Tagger qw(File Ogg);
+use Audio::Tagger qw(Any Ogg);
 
 my $files = [{filename => 't/data/brown.ogg'}, {filename => 't/data/pink.ogg'}, {filename => 't/data/white.ogg'}];
 
@@ -12,7 +12,7 @@ foreach my $file (@$files) {
 	copy($file -> {filename}, $temp)
 		or die "Copy failed: $!";
 
-	my $tagger = File($temp);
+	my $tagger = Any($temp);
 
 	my $new_title = 'Another title';
 	$tagger -> title($new_title);

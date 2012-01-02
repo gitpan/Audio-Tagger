@@ -1,6 +1,6 @@
 package Audio::Tagger::Ogg;
 {
-  $Audio::Tagger::Ogg::VERSION = '0.03';
+  $Audio::Tagger::Ogg::VERSION = '0.04';
 }
 
 use strict;
@@ -8,11 +8,11 @@ use warnings;
 
 =head1 NAME
 
-Audio::Tagger::Ogg - Perl module to handle audio metadata (mp3 files)
+Audio::Tagger::Ogg - Perl module to handle audio metadata (ogg files)
 
 =head1 VERSION
 
-version 0.03
+version 0.04
 
 =head1 SYNOPSIS
 

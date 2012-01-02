@@ -6,11 +6,12 @@ META.json
 META.yml
 Makefile.PL
 README
+TODO
 Tagger.xs
 dist.ini
 inc/MakeMaker.pm
 lib/Audio/Tagger.pm
-lib/Audio/Tagger/File.pm
+lib/Audio/Tagger/Any.pm
 lib/Audio/Tagger/Flac.pm
 lib/Audio/Tagger/MP3.pm
 lib/Audio/Tagger/Ogg.pm
@@ -40,7 +41,7 @@ t/data/white.wav
 t/release-check-manifest.t
 t/release-pod-coverage.t
 t/release-pod-syntax.t
-xs/File.xs
+xs/Any.xs
 xs/Flac.xs
 xs/MP3.xs
 xs/Ogg.xs

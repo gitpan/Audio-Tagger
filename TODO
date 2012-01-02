@@ -1,0 +1,3 @@
+check actual file type at ->new
+->field(type => 'ID3', name => 'APIC', text => 'lol') method
+bundle taglib into distribution

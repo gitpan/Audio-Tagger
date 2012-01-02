@@ -3,7 +3,7 @@
 use Test::More skip_all => "save for flac files does not work";
 
 use File::Copy;
-use Audio::Tagger qw(File Flac);
+use Audio::Tagger qw(Any Flac);
 
 my $files = [{filename => 't/data/brown.flac'}, {filename => 't/data/pink.flac'}, {filename => 't/data/white.flac'}];
 
@@ -12,7 +12,7 @@ foreach my $file (@$files) {
 	copy($file -> {filename}, $temp)
 		or die "Copy failed: $!";
 
-	my $tagger = File($temp);
+	my $tagger = Any($temp);
 
 	my $new_title = 'Another title';
 	$tagger -> title($new_title);
@@ -34,7 +34,7 @@ foreach my $file (@$files) {
 
 	is($tagger -> save, 1);
 
-	my $tagger2 = File($temp);
+	my $tagger2 = Any($temp);
 
 	is($tagger2 -> title, $new_title);
 	is($tagger2 -> artist, $new_artist);

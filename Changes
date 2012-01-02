@@ -1,9 +1,37 @@
 ==================================================
-Changes from 2011-01-01 00:00:00 +0000 to present.
+Changes from 2011-01-02 00:00:00 +0000 to present.
 ==================================================
 
 -----------------------------------------
-version 0.03 at 2012-01-01 21:37:41 +0000
+version 0.04 at 2012-01-02 19:34:40 +0000
+-----------------------------------------
+
+  Change: 346b5d041b71040550846f71a75e416f5d2ff019
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-01-02 20:34:00 +0000
+
+    bump version 
+
+  Change: ce910da2cefc7974bfd4d35662dedcef4ed8b8d3
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-01-02 20:34:00 +0000
+
+    little docs fixes 
+
+  Change: 03d722ceec87c632aa869099a4830f7960afba19
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-01-02 20:28:33 +0000
+
+    rename Audio::Tagger::File -> Audio::Tagger::Any 
+
+  Change: c3bac1c5b3845c593b591116310b642905528772
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-01-02 13:45:44 +0000
+
+    fix short description of Ogg.pm and Flac.pm 
+
+-----------------------------------------
+version 0.03 at 2012-01-01 21:37:25 +0000
 -----------------------------------------
 
   Change: 78f81a6d22342847a19a2f24a3f48e59bde4db1b

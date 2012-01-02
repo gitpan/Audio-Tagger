@@ -2,7 +2,7 @@
 
 use Test::More;
 
-use Audio::Tagger qw(File Ogg);
+use Audio::Tagger qw(Any Ogg);
 
 my $files = [{
 	filename => 't/data/brown.ogg', title => 'Brown Noise',
@@ -22,7 +22,7 @@ my $files = [{
 }];
 
 foreach my $file (@$files) {
-	my $tagger = File($file -> {filename});
+	my $tagger = Any($file -> {filename});
 
 	is($tagger -> title, $file -> {title});
 	is($tagger -> artist, $file -> {artist});

@@ -10,7 +10,7 @@ MODULE = Audio::Tagger		PACKAGE = Audio::Tagger
 
 PROTOTYPES: ENABLE
 
-INCLUDE: xs/File.xs
+INCLUDE: xs/Any.xs
 INCLUDE: xs/Flac.xs
 INCLUDE: xs/MP3.xs
 INCLUDE: xs/Ogg.xs
