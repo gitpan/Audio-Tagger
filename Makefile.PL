@@ -11,9 +11,11 @@ my %WriteMakefileArgs = (
   'ABSTRACT' => 'Perl module to handle audio metadata',
   'AUTHOR' => 'Alessandro Ghedini <alexbio@cpan.org>',
   'BUILD_REQUIRES' => {
+    'File::Basename' => '0',
     'File::Copy' => '0',
     'File::Find' => '0',
     'File::Temp' => '0',
+    'Test::Audio::Tagger::Data' => '0',
     'Test::More' => '0'
   },
   'CC' => 'g++',
@@ -36,7 +38,7 @@ my %WriteMakefileArgs = (
     'strict' => '0',
     'warnings' => '0'
   },
-  'VERSION' => '0.04',
+  'VERSION' => '0.05',
   'XSOPT' => '-C++ -hiertype',
   'test' => {
     'TESTS' => 't/*.t'

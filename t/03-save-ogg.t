@@ -2,17 +2,19 @@
 
 use Test::More;
 
+use lib 't';
+
 use File::Copy;
-use Audio::Tagger qw(Any Ogg);
+use Audio::Tagger qw(Ogg);
+use Test::Audio::Tagger::Data;
 
-my $files = [{filename => 't/data/brown.ogg'}, {filename => 't/data/pink.ogg'}, {filename => 't/data/white.ogg'}];
-
-foreach my $file (@$files) {
+foreach my $file (@$Test::Audio::Tagger::Data::ogg_files) {
 	my $temp   = 't/data/temp.ogg';
+
 	copy($file -> {filename}, $temp)
 		or die "Copy failed: $!";
 
-	my $tagger = Any($temp);
+	my $tagger = Ogg($temp);
 
 	my $new_title = 'Another title';
 	$tagger -> title($new_title);
@@ -34,32 +36,7 @@ foreach my $file (@$files) {
 
 	is($tagger -> save, 1);
 
-	my $tagger2 = Any($temp);
-
-	is($tagger2 -> title, $new_title);
-	is($tagger2 -> artist, $new_artist);
-	is($tagger2 -> album, $new_album);
-	is($tagger2 -> comment, $new_comment);
-	is($tagger2 -> year, $new_year);
-	is($tagger2 -> track, $new_track);
-
-	unlink($temp);
-
-	copy($file -> {filename}, $temp)
-		or die "Copy failed: $!";
-
-	$tagger = Ogg($temp);
-
-	$tagger -> title($new_title);
-	$tagger -> artist($new_artist);
-	$tagger -> album($new_album);
-	$tagger -> comment($new_comment);
-	$tagger -> year($new_year);
-	$tagger -> track($new_track);
-
-	is($tagger -> save, 1);
-
-	$tagger2 = Ogg($temp);
+	my $tagger2 = Ogg($temp);
 
 	is($tagger2 -> title, $new_title);
 	is($tagger2 -> artist, $new_artist);

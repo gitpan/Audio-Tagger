@@ -4,11 +4,17 @@ use Test::More;
 
 use lib 't';
 
-use Audio::Tagger qw(MP3);
+use Audio::Tagger qw(Any);
 use Test::Audio::Tagger::Data;
 
-foreach my $file (@$Test::Audio::Tagger::Data::mp3_files) {
-	my $tagger = MP3($file -> {filename});
+my @all_files = (
+	@$Test::Audio::Tagger::Data::flac_files,
+	@$Test::Audio::Tagger::Data::mp3_files,
+	@$Test::Audio::Tagger::Data::ogg_files
+);
+
+foreach my $file (@all_files) {
+	my $tagger = Any($file -> {filename});
 
 	is($tagger -> title, $file -> {title});
 	is($tagger -> artist, $file -> {artist});

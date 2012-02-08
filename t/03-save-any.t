@@ -1,20 +1,30 @@
 #!perl -T
 
-use Test::More skip_all => "save for flac files does not work";
+use Test::More;
 
 use lib 't';
 
 use File::Copy;
-use Audio::Tagger qw(Flac);
+use File::Basename;
+use Audio::Tagger qw(Any);
 use Test::Audio::Tagger::Data;
 
-foreach my $file (@$Test::Audio::Tagger::Data::flac_files) {
-	my $temp   = 't/data/temp.flac';
+my @all_files = (
+	@$Test::Audio::Tagger::Data::flac_files,
+	@$Test::Audio::Tagger::Data::mp3_files,
+	@$Test::Audio::Tagger::Data::ogg_files
+);
+
+foreach my $file (@all_files) {
+	my (undef, undef, $ext) = fileparse($file -> {filename},'\..*');
+	my $temp   = "t/data/temp$ext";
+
+	next if $ext eq '.flac';
 
 	copy($file -> {filename}, $temp)
 		or die "Copy failed: $!";
 
-	my $tagger = Flac($temp);
+	my $tagger = Any($temp);
 
 	my $new_title = 'Another title';
 	$tagger -> title($new_title);
@@ -36,7 +46,7 @@ foreach my $file (@$Test::Audio::Tagger::Data::flac_files) {
 
 	is($tagger -> save, 1);
 
-	my $tagger2 = Flac($temp);
+	my $tagger2 = Any($temp);
 
 	is($tagger2 -> title, $new_title);
 	is($tagger2 -> artist, $new_artist);

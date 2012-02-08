@@ -2,17 +2,19 @@
 
 use Test::More;
 
+use lib 't';
+
 use File::Copy;
 use Audio::Tagger qw(Any MP3);
+use Test::Audio::Tagger::Data;
 
-my $files = [{filename => 't/data/brown.mp3'}, {filename => 't/data/pink.mp3'}, {filename => 't/data/white.mp3'}];
-
-foreach my $file (@$files) {
+foreach my $file (@$Test::Audio::Tagger::Data::mp3_files) {
 	my $temp   = 't/data/temp.mp3';
+
 	copy($file -> {filename}, $temp)
 		or die "Copy failed: $!";
 
-	my $tagger = Any($temp);
+	my $tagger = MP3($temp);
 
 	my $new_title = 'Another title';
 	$tagger -> title($new_title);
@@ -35,31 +37,6 @@ foreach my $file (@$files) {
 	is($tagger -> year, $new_year);
 
 	my $new_track = 5;
-	$tagger -> track($new_track);
-	is($tagger -> track, $new_track);
-
-	unlink($temp);
-
-	copy($file -> {filename}, $temp)
-		or die "Copy failed: $!";
-
-	$tagger = MP3($temp);
-
-	$tagger -> title($new_title);
-	is($tagger -> title, $new_title);
-
-	$tagger -> artist($new_artist);
-	is($tagger -> artist, $new_artist);
-
-	$tagger -> album($new_album);
-	is($tagger -> album, $new_album);
-
-	$tagger -> comment($new_comment);
-	is($tagger -> comment, $new_comment);
-
-	$tagger -> year($new_year);
-	is($tagger -> year, $new_year);
-
 	$tagger -> track($new_track);
 	is($tagger -> track, $new_track);
 

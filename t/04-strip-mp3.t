@@ -2,25 +2,15 @@
 
 use Test::More;
 
+use lib 't';
+
 use File::Copy;
 use Audio::Tagger qw(MP3);
+use Test::Audio::Tagger::Data;
 
-my $files = [{
-	filename => 't/data/brown.mp3', title => 'Brown Noise',
-	artist => 'A random guy', album => 'Some noise',
-	comment => 'I am a comment', year => 2011, track => 1
-}, {
-	filename => 't/data/pink.mp3', title => 'Pink Noise',
-	artist   => 'A random guy', album  => 'Some noise',
-	comment  => 'I am a comment', year => 2011, track => 2
-}, {
-	filename => 't/data/white.mp3', title => 'White Noise',
-	artist   => 'A random guy', album => 'Some noise',
-	comment  => 'I am a comment', year => 2011, track => 3
-}];
-
-foreach my $file (@$files) {
+foreach my $file (@$Test::Audio::Tagger::Data::mp3_files) {
 	my $temp   = 't/data/temp.mp3';
+
 	copy($file -> {filename}, $temp)
 		or die "Copy failed: $!";
 

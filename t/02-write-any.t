@@ -5,16 +5,24 @@ use Test::More;
 use lib 't';
 
 use File::Copy;
-use Audio::Tagger qw(Any Ogg);
+use File::Basename;
+use Audio::Tagger qw(Any);
 use Test::Audio::Tagger::Data;
 
-foreach my $file (@$Test::Audio::Tagger::Data::ogg_files) {
-	my $temp   = 't/data/temp.ogg';
+my @all_files = (
+	@$Test::Audio::Tagger::Data::flac_files,
+	@$Test::Audio::Tagger::Data::mp3_files,
+	@$Test::Audio::Tagger::Data::ogg_files
+);
+
+foreach my $file (@all_files) {
+	my (undef, undef, $ext) = fileparse($file -> {filename},'\..*');
+	my $temp   = "t/data/temp$ext";
 
 	copy($file -> {filename}, $temp)
 		or die "Copy failed: $!";
 
-	my $tagger = Ogg($temp);
+	my $tagger = Any($temp);
 
 	my $new_title = 'Another title';
 	$tagger -> title($new_title);

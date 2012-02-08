@@ -1,6 +1,6 @@
 package Audio::Tagger::Any;
 {
-  $Audio::Tagger::Any::VERSION = '0.04';
+  $Audio::Tagger::Any::VERSION = '0.05';
 }
 
 use strict;
@@ -12,7 +12,7 @@ Audio::Tagger::Any - Perl module to handle audio metadata (any files)
 
 =head1 VERSION
 
-version 0.04
+version 0.05
 
 =head1 SYNOPSIS
 
