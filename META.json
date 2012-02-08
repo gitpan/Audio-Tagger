@@ -51,7 +51,7 @@
          "web" : "https://github.com/AlexBio/Audio-Tagger"
       }
    },
-   "version" : "0.05",
+   "version" : "0.06",
    "x_Dist_Zilla" : {
       "plugins" : [
          {
@@ -198,6 +198,11 @@
             "class" : "Dist::Zilla::Plugin::Clean",
             "name" : "@Author::ALEXBIO/Clean",
             "version" : "0.02"
+         },
+         {
+            "class" : "Dist::Zilla::Plugin::AutoPrereqs",
+            "name" : "AutoPrereqs",
+            "version" : "4.300007"
          },
          {
             "class" : "Dist::Zilla::Plugin::Prereqs",

@@ -3,7 +3,23 @@ Changes from 2011-02-08 00:00:00 +0000 to present.
 ==================================================
 
 -----------------------------------------
-version 0.05 at 2012-02-08 12:07:25 +0000
+version 0.06 at 2012-02-08 12:11:41 +0000
+-----------------------------------------
+
+  Change: a8d9eeeeceeb0b84f8551ead784f4fa8c0b70f79
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-02-08 13:11:32 +0000
+
+    bump version 
+
+  Change: 06c24b073baaf83ded6621550fe77ccf76f66d01
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-02-08 13:11:19 +0000
+
+    do not put Test module into prereqs 
+
+-----------------------------------------
+version 0.05 at 2012-02-08 12:07:10 +0000
 -----------------------------------------
 
   Change: 1debe8076e699d55458e9a9bb49c84e9a0fdc808
