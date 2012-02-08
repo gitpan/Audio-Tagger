@@ -15,7 +15,6 @@ my %WriteMakefileArgs = (
     'File::Copy' => '0',
     'File::Find' => '0',
     'File::Temp' => '0',
-    'Test::Audio::Tagger::Data' => '0',
     'Test::More' => '0'
   },
   'CC' => 'g++',
@@ -38,7 +37,7 @@ my %WriteMakefileArgs = (
     'strict' => '0',
     'warnings' => '0'
   },
-  'VERSION' => '0.06',
+  'VERSION' => '0.07',
   'XSOPT' => '-C++ -hiertype',
   'test' => {
     'TESTS' => 't/*.t'

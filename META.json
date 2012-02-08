@@ -34,7 +34,6 @@
             "File::Copy" : "0",
             "File::Find" : "0",
             "File::Temp" : "0",
-            "Test::Audio::Tagger::Data" : "0",
             "Test::More" : "0"
          }
       }
@@ -51,7 +50,7 @@
          "web" : "https://github.com/AlexBio/Audio-Tagger"
       }
    },
-   "version" : "0.06",
+   "version" : "0.07",
    "x_Dist_Zilla" : {
       "plugins" : [
          {
@@ -200,8 +199,15 @@
             "version" : "0.02"
          },
          {
-            "class" : "Dist::Zilla::Plugin::AutoPrereqs",
-            "name" : "AutoPrereqs",
+            "class" : "Dist::Zilla::Plugin::RemovePrereqs",
+            "config" : {
+               "Dist::Zilla::Plugin::RemovePrereqs" : {
+                  "modules_to_remove" : [
+                     "Test::Audio::Tagger::Data"
+                  ]
+               }
+            },
+            "name" : "RemovePrereqs",
             "version" : "4.300007"
          },
          {

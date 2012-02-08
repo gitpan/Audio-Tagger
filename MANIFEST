@@ -28,7 +28,6 @@ t/03-save-flac.t
 t/03-save-mp3.t
 t/03-save-ogg.t
 t/04-strip-mp3.t
-t/Test/Audio/Tagger/Data.pm
 t/data/brown.flac
 t/data/brown.mp3
 t/data/brown.ogg
@@ -41,6 +40,7 @@ t/data/white.flac
 t/data/white.mp3
 t/data/white.ogg
 t/data/white.wav
+t/lib/Test/Audio/Tagger/Data.pm
 t/release-check-manifest.t
 t/release-pod-coverage.t
 t/release-pod-syntax.t

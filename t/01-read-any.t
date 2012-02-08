@@ -2,7 +2,7 @@
 
 use Test::More;
 
-use lib 't';
+use lib 't/lib';
 
 use Audio::Tagger qw(Any);
 use Test::Audio::Tagger::Data;

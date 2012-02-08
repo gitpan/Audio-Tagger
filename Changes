@@ -3,7 +3,29 @@ Changes from 2011-02-08 00:00:00 +0000 to present.
 ==================================================
 
 -----------------------------------------
-version 0.06 at 2012-02-08 12:11:41 +0000
+version 0.07 at 2012-02-08 12:36:49 +0000
+-----------------------------------------
+
+  Change: 72af3671a13088340099f548d6357469494b5dee
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-02-08 13:35:51 +0000
+
+    re-bump version 
+
+  Change: 124fe69fbdd205877fc063642fc972a7e12723dd
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-02-08 13:35:15 +0000
+
+    move Test module under t/lib 
+
+  Change: 96710ae878d2bfa652483e2c545b7f8656768cc2
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-02-08 13:34:01 +0000
+
+    do not put Test module into prereqs (now using RemovePrereqs) 
+
+-----------------------------------------
+version 0.06 at 2012-02-08 12:11:32 +0000
 -----------------------------------------
 
   Change: a8d9eeeeceeb0b84f8551ead784f4fa8c0b70f79

@@ -2,7 +2,7 @@
 
 use Test::More skip_all => "save for flac files does not work";
 
-use lib 't';
+use lib 't/lib';
 
 use File::Copy;
 use Audio::Tagger qw(Flac);
