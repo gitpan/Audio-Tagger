@@ -3,7 +3,23 @@ Changes from 2011-02-08 00:00:00 +0000 to present.
 ==================================================
 
 -----------------------------------------
-version 0.07 at 2012-02-08 12:36:49 +0000
+version 0.08 at 2012-02-08 19:46:16 +0000
+-----------------------------------------
+
+  Change: e04b0a7359c1f53e87e9321deee90b4b81925f99
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-02-08 20:42:43 +0000
+
+    re-work description 
+
+  Change: 221a73d6659d1b34ef309316850e8ab9515cf419
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-02-08 14:35:43 +0000
+
+    use Git::NextVersion plugin 
+
+-----------------------------------------
+version 0.07 at 2012-02-08 12:35:51 +0000
 -----------------------------------------
 
   Change: 72af3671a13088340099f548d6357469494b5dee

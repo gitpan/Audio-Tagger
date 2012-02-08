@@ -1,6 +1,6 @@
 package Audio::Tagger;
 {
-  $Audio::Tagger::VERSION = '0.07';
+  $Audio::Tagger::VERSION = '0.08';
 }
 
 use strict;
@@ -25,7 +25,7 @@ Audio::Tagger - Perl module to handle audio metadata
 
 =head1 VERSION
 
-version 0.07
+version 0.08
 
 =head1 SYNOPSIS
 
@@ -52,10 +52,13 @@ Synopsis section
 
 =head1 DESCRIPTION
 
-B<Audio::Tagger> is a module to read and write metadata from various types of
-different audio formats. There are many other similar modules, but they are all
-either incomplete (e.g. support only a single audio/tag type, can only read but
-not modify tags, ...) or abandoned/broken.
+B<Audio::Tagger> is a module to read and write metadata from various types 
+of different audio formats. It is currently based on C<taglib>, a library 
+written in C++ which is quite fast and complete.
+
+There are many other Perl modules that handle audio metadata, but they are 
+all either incomplete (e.g. they support only a single audio/tag format or 
+cannot modify tags at all) or abandoned/broken.
 
 =head1 SUBROUTINES
 
