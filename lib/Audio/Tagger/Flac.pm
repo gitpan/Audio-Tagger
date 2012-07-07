@@ -1,6 +1,6 @@
 package Audio::Tagger::Flac;
 {
-  $Audio::Tagger::Flac::VERSION = '0.08';
+  $Audio::Tagger::Flac::VERSION = '0.09';
 }
 
 use strict;
@@ -12,7 +12,7 @@ Audio::Tagger::Flac - Perl module to handle audio metadata (flac files)
 
 =head1 VERSION
 
-version 0.08
+version 0.09
 
 =head1 SYNOPSIS
 
