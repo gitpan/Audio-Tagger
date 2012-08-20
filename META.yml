@@ -27,7 +27,7 @@ resources:
   bugtracker: https://github.com/ghedo/p5-Audio-Tagger/issues
   homepage: http://metacpan.org/release/Audio-Tagger/
   repository: git://github.com/ghedo/p5-Audio-Tagger.git
-version: 0.10
+version: 0.11
 x_Dist_Zilla:
   plugins:
     -

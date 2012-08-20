@@ -3,7 +3,47 @@ Changes from 2011-08-21 00:00:00 +0000 to present.
 ==================================================
 
 -----------------------------------------
-version 0.10 at 2012-08-20 08:41:27 +0000
+version 0.11 at 2012-08-20 09:09:29 +0000
+-----------------------------------------
+
+  Change: ead7e257039b2b3d030349285606b8503eb146af
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-08-20 11:04:19 +0000
+
+    travis.yml: now it should be the last 
+
+  Change: 80d2a34418eebcb1dab00a4fe4098f03a17e4330
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-08-20 11:00:20 +0000
+
+    travis.yml: last bit 
+
+  Change: 3eefa423ef8edcf043a3c7a0e1e9b7edacccc7a5
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-08-20 10:55:13 +0000
+
+    travis.yml: that's why... 
+
+  Change: 560a359fcdc0f48b33129509e48f5943d322bc38
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-08-20 10:49:48 +0000
+
+    travis.yml: WHY U NO WORK? 
+
+  Change: 36f57b402dba29889f4a20960ae1e7f9f6f3d0f3
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-08-20 10:45:43 +0000
+
+    travis: fix script 
+
+  Change: dcd6fce057272aaf1c6e4018e7119e92c8d9098d
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-08-20 10:43:38 +0000
+
+    travis: fix install 
+
+-----------------------------------------
+version 0.10 at 2012-08-20 08:38:58 +0000
 -----------------------------------------
 
   Change: bae6bc93e68c10ffb44c9f1fe13642a2760ecdc2
