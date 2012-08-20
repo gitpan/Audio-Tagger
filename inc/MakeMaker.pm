@@ -16,7 +16,7 @@ override _build_MakeFile_PL_template => sub {
 override _build_WriteMakefile_args => sub {
 	return +{
 		%{ super() },
-		LIBS	=> ['-ltag'],
+		LIBS	=> '-ltag',
 		INC	=> '-I.',
 		XSOPT	=> '-C++ -hiertype',
 		CC	=> 'g++',

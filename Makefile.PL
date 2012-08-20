@@ -25,9 +25,7 @@ my %WriteMakefileArgs = (
   'DISTNAME' => 'Audio-Tagger',
   'EXE_FILES' => [],
   'INC' => '-I.',
-  'LIBS' => [
-    '-ltag'
-  ],
+  'LIBS' => '-ltag',
   'LICENSE' => 'perl',
   'NAME' => 'Audio::Tagger',
   'OBJECT' => '$(O_FILES)',
@@ -37,7 +35,7 @@ my %WriteMakefileArgs = (
     'strict' => '0',
     'warnings' => '0'
   },
-  'VERSION' => '0.09',
+  'VERSION' => '0.10',
   'XSOPT' => '-C++ -hiertype',
   'test' => {
     'TESTS' => 't/*.t'

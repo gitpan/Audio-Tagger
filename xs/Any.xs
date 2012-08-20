@@ -11,17 +11,14 @@ _tagger_any_file_new(path)
 		FileRef *file;
 		SV *self = newSV(1);
 
-		STRLEN len;
 		const char *filename;
 	CODE:
-		SvGETMAGIC(path);
-		filename = SvPV(path, len);
+		filename = SvPV_nolen(path);
 
 		file = new FileRef(filename);
 
 		RETVAL = sv_setref_pv(self, "Audio::Tagger::Any", (void *) file);
-	OUTPUT:
-		RETVAL
+	OUTPUT: RETVAL
 
 SV *
 _tagger_any_file_save(self)
@@ -40,8 +37,7 @@ _tagger_any_file_save(self)
 			RETVAL = newSVuv(1);
 		else
 			RETVAL = newSVuv(0);
-	OUTPUT:
-		RETVAL
+	OUTPUT: RETVAL
 
 void
 _tagger_any_file_destroy(self)
@@ -83,8 +79,7 @@ _tagger_any_tag_get_str(self, tagn)
 		}
 
 		RETVAL = newSVpv(str.toCString(), 0);
-	OUTPUT:
-		RETVAL
+	OUTPUT: RETVAL
 
 SV *
 _tagger_any_tag_set_str(self, tagn, string)
@@ -96,7 +91,6 @@ _tagger_any_tag_set_str(self, tagn, string)
 		Tag *tag;
 		FileRef *file;
 
-		STRLEN len;
 		const char *new_string;
 	CODE:
 		if (sv_isobject(self) && sv_derived_from(self, "Audio::Tagger::Any"))
@@ -104,8 +98,7 @@ _tagger_any_tag_set_str(self, tagn, string)
 		else
 			Perl_croak(aTHX_ "$var is not of type Audio::Tagger::Any");
 
-		SvGETMAGIC(string);
-		new_string = SvPV(string, len);
+		new_string = SvPV_nolen(string);
 
 		tag = file -> tag();
 
@@ -118,8 +111,7 @@ _tagger_any_tag_set_str(self, tagn, string)
 		}
 
 		RETVAL = newSVpv(new_string, 0);
-	OUTPUT:
-		RETVAL
+	OUTPUT: RETVAL
 
 SV *
 _tagger_any_tag_get_num(self, tagn)
@@ -144,8 +136,7 @@ _tagger_any_tag_get_num(self, tagn)
 		}
 
 		RETVAL = newSVuv(num);
-	OUTPUT:
-		RETVAL
+	OUTPUT: RETVAL
 
 SV *
 _tagger_any_tag_set_num(self, tagn, number)
@@ -170,8 +161,7 @@ _tagger_any_tag_set_num(self, tagn, number)
 		}
 
 		RETVAL = newSVuv(number);
-	OUTPUT:
-		RETVAL
+	OUTPUT: RETVAL
 
 SV *
 _tagger_any_prop_get_num(self, propn)
@@ -197,5 +187,4 @@ _tagger_any_prop_get_num(self, propn)
 		}
 
 		RETVAL = newSVuv(num);
-	OUTPUT:
-		RETVAL
+	OUTPUT: RETVAL
