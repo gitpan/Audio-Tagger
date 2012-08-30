@@ -8,7 +8,7 @@ use warnings;
 use ExtUtils::MakeMaker 6.30;
 
 my %WriteMakefileArgs = (
-  'ABSTRACT' => 'Perl module to handle audio metadata',
+  'ABSTRACT' => '(DEPRECATED) Perl module to handle audio metadata',
   'AUTHOR' => 'Alessandro Ghedini <alexbio@cpan.org>',
   'BUILD_REQUIRES' => {
     'File::Basename' => '0',
@@ -35,7 +35,7 @@ my %WriteMakefileArgs = (
     'strict' => '0',
     'warnings' => '0'
   },
-  'VERSION' => '0.11',
+  'VERSION' => '0.12',
   'XSOPT' => '-C++ -hiertype',
   'test' => {
     'TESTS' => 't/*.t'

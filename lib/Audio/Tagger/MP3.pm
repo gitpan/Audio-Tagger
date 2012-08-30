@@ -1,6 +1,6 @@
 package Audio::Tagger::MP3;
 {
-  $Audio::Tagger::MP3::VERSION = '0.11';
+  $Audio::Tagger::MP3::VERSION = '0.12';
 }
 
 use strict;
@@ -8,11 +8,11 @@ use warnings;
 
 =head1 NAME
 
-Audio::Tagger::MP3 - Perl module to handle audio metadata (mp3 files)
+Audio::Tagger::MP3 - (DEPRECATED) Perl module to handle audio metadata (mp3 files)
 
 =head1 VERSION
 
-version 0.11
+version 0.12
 
 =head1 SYNOPSIS
 

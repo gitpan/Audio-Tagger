@@ -1,6 +1,6 @@
 package Audio::Tagger;
 {
-  $Audio::Tagger::VERSION = '0.11';
+  $Audio::Tagger::VERSION = '0.12';
 }
 
 use strict;
@@ -21,11 +21,11 @@ our @EXPORT_OK = qw(Any File Flac MP3 Ogg);
 
 =head1 NAME
 
-Audio::Tagger - Perl module to handle audio metadata
+Audio::Tagger - (DEPRECATED) Perl module to handle audio metadata
 
 =head1 VERSION
 
-version 0.11
+version 0.12
 
 =head1 SYNOPSIS
 
@@ -59,6 +59,9 @@ written in C++ which is quite fast and complete.
 There are many other Perl modules that handle audio metadata, but they are 
 all either incomplete (e.g. they support only a single audio/tag format or 
 cannot modify tags at all) or abandoned/broken.
+
+B<Note>: Audio::Tagger is now deprecated and pretty much unmaintained. Have a
+look at L<Audio::TagLib> or get in touch if you want to maintain this.
 
 =head1 SUBROUTINES
 

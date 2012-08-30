@@ -1,5 +1,5 @@
 ---
-abstract: 'Perl module to handle audio metadata'
+abstract: '(DEPRECATED) Perl module to handle audio metadata'
 author:
   - 'Alessandro Ghedini <alexbio@cpan.org>'
 build_requires:
@@ -24,10 +24,8 @@ requires:
   strict: 0
   warnings: 0
 resources:
-  bugtracker: https://github.com/ghedo/p5-Audio-Tagger/issues
-  homepage: http://metacpan.org/release/Audio-Tagger/
   repository: git://github.com/ghedo/p5-Audio-Tagger.git
-version: 0.11
+version: 0.12
 x_Dist_Zilla:
   plugins:
     -
@@ -81,11 +79,11 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::GitHub::Meta
       name: '@Author::ALEXBIO/@GitHub/GitHub::Meta'
-      version: 0.26
+      version: 0.27
     -
       class: Dist::Zilla::Plugin::GitHub::Update
       name: '@Author::ALEXBIO/@GitHub/GitHub::Update'
-      version: 0.26
+      version: 0.27
     -
       class: Dist::Zilla::Plugin::Git::NextVersion
       name: '@Author::ALEXBIO/Git::NextVersion'
@@ -121,7 +119,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::Test::CheckManifest
       name: '@Author::ALEXBIO/Test::CheckManifest'
-      version: 0.03
+      version: 0.04
     -
       class: Dist::Zilla::Plugin::PodSyntaxTests
       name: '@Author::ALEXBIO/PodSyntaxTests'
@@ -149,7 +147,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::Clean
       name: '@Author::ALEXBIO/Clean'
-      version: 0.06
+      version: 0.07
     -
       class: Dist::Zilla::Plugin::RemovePrereqs
       config:
